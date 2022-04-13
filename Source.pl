@@ -27,3 +27,4 @@ correct_letters_helper(H,[H0|T0],CL):-
 category([]). 
 category(L):-
   L = [H|T], is_category(H), category(T).
+%
