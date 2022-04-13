@@ -1,1 +1,1 @@
-
+word(horse,animals).
