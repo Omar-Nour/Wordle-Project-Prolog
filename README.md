@@ -1,5 +1,6 @@
 # Wordle Project Prolog
 Implementing the game "Wordle" using the logic programming language Prolog.
+>[Original Wordle Game](https://www.nytimes.com/games/wordle/index.html)
 
 ## Sample run
 ```
