@@ -14,7 +14,7 @@ pick_word(W, L, C):-
 %implemented by: Ali
 correct_letters(L1,L2,CL):-
 CL = [H|T],
-correct_letters_helper(H,L1[H|T]),
+correct_letters_helper(H,L1,[H|T]),
 correct_letters_helper(H,L2,[H|T]).
 
 
