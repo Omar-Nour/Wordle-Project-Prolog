@@ -5,7 +5,7 @@ is_category(C):-
   word(_, C).
   
 %Implemented by: Omar
-pick_word(W, L, C) :-
+pick_word(W, L, C):-
   word(W, C1),
   C1 = C,
   length(W, L1),
