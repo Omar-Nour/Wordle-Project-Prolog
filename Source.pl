@@ -18,7 +18,9 @@ correct_letters(L1,L2,CL):-
   correct_letters_helper(H, L2, [H|T]).
 
 correct_letters_helper(X, [], []).
-
 correct_letters_helper(H,[H0|T0],CL):-
   (H = H0, CL is [H|T]);
   (H \= H0, correct_letters_helper(H, [T0], CL1).
+
+
+
