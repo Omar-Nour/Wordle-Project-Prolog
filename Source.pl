@@ -14,16 +14,17 @@ pick_word(W, L, C):-
 build_kb:-
     write('Please enter a word and its category on separate lines:'), nl,
     read(N),
-    N == 'done',
-    write('Done building the words database...'), nl,
-    !.
-
-build_kb:-
-    write('Please enter a word and its category on separate lines:'), nl,
-    read(N),
-    read(C), nl,
-    assert(word(N, C)),
-    build_kb.
+    (
+        N \== 'done',
+        read(C), nl,
+        assert(word(N, C)),
+        build_kb
+    )
+    ;
+    (
+        N == 'done',
+        write('Done building the words database...'), nl, !
+    ).
 %
   
 % Implemented by: Ali
