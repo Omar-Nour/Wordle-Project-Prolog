@@ -15,15 +15,15 @@ build_kb:-
     write('Please enter a word and its category on separate lines:'), nl,
     read(N),
     (
-        N \== 'done',
-        read(C), nl,
-        assert(word(N, C)),
-        build_kb
+        N == 'done',
+        write('Done building the words database...'), nl, !
     )
     ;
     (
-        N == 'done',
-        write('Done building the words database...'), nl, !
+        N \== 'done',
+        read(C),
+        assert(word(N, C)),
+        build_kb
     ).
 %
   
