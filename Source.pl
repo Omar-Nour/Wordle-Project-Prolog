@@ -30,5 +30,7 @@ category(L):-
 %
 
 main:-
+  write("Welcome to Pro-Wordle!"), nl,
+  write("----------------------"), nl,
   build_kb,
   play.
