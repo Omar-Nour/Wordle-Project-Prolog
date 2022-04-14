@@ -7,10 +7,22 @@ is_category(C):-
   
 % Implemented by: Omar
 pick_word(W, L, C):-
-  word(W, C1),
-  C1 = C,
+  word(W, C),
   atom_length(W, L1),
   L = L1.
+  
+build_kb:-
+    write('Please enter a word and its category on separate lines:'), nl,
+    read(N),
+    N == 'done',
+    !.
+
+build_kb:-
+    write('Please enter a name and category:'), nl,
+    read(N),
+    read(C), nl,
+    assert(word(N, C)),
+    build_kb.
 %
   
 % Implemented by: Ali
