@@ -29,6 +29,6 @@ category(L):-
   L = [H|T], is_category(H), category(T).
 %
 
-main :-
+main:-
   build_kb,
   play.
