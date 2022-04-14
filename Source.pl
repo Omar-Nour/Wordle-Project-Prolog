@@ -18,7 +18,7 @@ build_kb:-
     !.
 
 build_kb:-
-    write('Please enter a name and category:'), nl,
+    write('Please enter a word and its category on separate lines:'), nl,
     read(N),
     read(C), nl,
     assert(word(N, C)),
