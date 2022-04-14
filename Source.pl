@@ -9,7 +9,7 @@ is_category(C):-
 pick_word(W, L, C):-
   word(W, C),
   atom_length(W, L1),
-  L = L1.
+  L == L1.
   
 build_kb:-
     write('Please enter a word and its category on separate lines:'), nl,
