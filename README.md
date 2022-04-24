@@ -60,16 +60,16 @@ Enter a word composed of 5 letters:
 |: hello.
 Correct letters are: [h,e,o]
 Correct letters in correct positions are: [h]
-Remaining Guesses are 4
+Remaining Guesses are 5
 Enter a word composed of 5 letters:
 |: hell.
 Word is not composed of 5 letters. Try again.
-Remaining Guesses are 4
+Remaining Guesses are 5
 Enter a word composed of 5 letters:
 |: hoard.
 Correct letters are: [h,o,r]
 Correct letters in correct positions are: [h,o]
-Remaining Guesses are 3
+Remaining Guesses are 4
 Enter a word composed of 5 letters:
 |: horse.
 You Won!
