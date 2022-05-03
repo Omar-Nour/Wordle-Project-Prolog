@@ -4,16 +4,17 @@ word(horse, animals).
 is_category(C):- 
   word(_, C).
   
-correct_positions([H1|T1],[H2|T2],[H|T]):-
-  (
-   H1 = H2,
-   H=H1,
-   correct_positions(T1,T2,T)
-  );
-  (
-   H1 \= H2,
-   correct_positions(T1,T2,[H|T])
-  ).
+correct_positions([],[],[]).
+correct_positions([H1|T1],[H2|T2],PL):-
+	(
+	 H1=H2,
+	 PL=[H1|T],
+	 correct_positions(T1,T2,T)
+	);
+	(
+	 H1 \= H2,
+	 correct_positions(T1,T2,PL)
+	).
   
 %
   
