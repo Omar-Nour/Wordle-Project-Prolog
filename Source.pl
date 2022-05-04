@@ -3,7 +3,7 @@ is_category(C):-
   word(_, C).
   
 correct_positions([], [], []).
-correct_positions([H1|T1],[H2|T2],PL):-
+correct_positions([H1|T1], [H2|T2], PL):-
 	(
 	 H1 = H2,
 	 PL = [H1|T],
