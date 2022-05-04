@@ -4,16 +4,16 @@ is_category(C):-
   
 correct_positions([], [], []).
 correct_positions([H1|T1], [H2|T2], PL):-
-	(
+  (
 	 H1 = H2,
 	 PL = [H1|T],
 	 correct_positions(T1, T2, T)
-	)
-	;
-	(
+  )
+  ;
+  (
 	 H1 \= H2,
 	 correct_positions(T1, T2, PL)
-	).
+  ).
 %
   
 % Implemented by: Omar
