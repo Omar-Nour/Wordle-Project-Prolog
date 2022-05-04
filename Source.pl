@@ -1,5 +1,3 @@
-word(horse, animals).
-
 % Implemented by: Shamekh
 is_category(C):- 
   word(_, C).
