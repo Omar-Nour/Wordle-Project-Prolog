@@ -49,16 +49,6 @@ build_kb:-
 	%|: 5.
 	%Game started. You have 6 guesses.
 	
-init_game(W):-
- 	write('The available categories are: '),
-	categories(List),
-	write(List), nl,
-	available_length(L),
-	choose_catgeory(List, C),
-	choose_length(L, Word_length),
-	pick_word(W, Word_length, C),
-	write('Game started. You have 6 guesses.').
-
 choose_catgeory(List, C):-
 	write('Choose a category: '), nl,
 	read(Input),
@@ -86,6 +76,16 @@ choose_length(L, Word_length):-
 	\+member(N, L),
 	write('There are no words of this length.'), nl,
 	choose_length(L, Word_length).
+
+init_game(W):-
+ 	write('The available categories are: '),
+	categories(List),
+	write(List), nl,
+	available_length(L),
+	choose_catgeory(List, C),
+	choose_length(L, Word_length),
+	pick_word(W, Word_length, C),
+	write('Game started. You have 6 guesses.').
 	
 get_word(Length, W):-
 	write('Enter a word composed of '), write(Length), write(' letters:'), nl,
