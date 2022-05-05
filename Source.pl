@@ -69,7 +69,7 @@ choose_catgeory(List, C):-
 	write('Choose a category: '),
 	read(Input),
 	\+member(Input, List),
-	write('There is no such category'), nl,
+	write('This category does not exist.'), nl,
 	choose_catgeory(List, C).
 	
 choose_length(L, Word_length):-
