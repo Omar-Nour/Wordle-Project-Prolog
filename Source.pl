@@ -55,32 +55,37 @@ init_game(W):-
 	write(List), nl,
 	available_length(L),
 	choose_catgeory(List, C),
-	choose_length(L, word_length),
-	pick_word(W, word_length, C).
+	choose_length(L, Word_length),
+	pick_word(W, Word_length, C),
+	write('Game started. You have 6 guesses.').
 
 choose_catgeory(List, C):-
 	write('Choose a category: '),
-	read(C),
-	member(C, List).
+	read(Input),
+	member(Input, List).
+	C = Input.
 
 choose_catgeory(List, C):-
 	write('Choose a category: '),
-	read(C),
-	\+member(C, List),
+	read(Input),
+	\+member(Input, List),
 	write('There is no such category'), nl,
 	choose_catgeory(List, C).
 	
-choose_length(L, word_length):-
+choose_length(L, Word_length):-
 	write('Choose a length: '),
 	read(Len),
-	member(Len, L).
+	number_string(N, Len),
+	member(N, L),
+	Word_length = N.
 
-choose_length(L, word_length):-
+choose_length(L, Word_length):-
 	write('Choose a length: '),
 	read(Len),
-	\+member(Len, L),
+	number_string(N, Len),
+	\+member(N, L),
 	write('There are no words of this length.'), nl,
-	choose_length(L, word_length).
+	choose_length(L, Word_length).
 %
   
 % Implemented by: Ali
