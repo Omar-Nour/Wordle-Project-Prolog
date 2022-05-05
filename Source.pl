@@ -1,4 +1,5 @@
-word(abc, efg).
+:- dynamic
+        word/2.
 
 availablele_length(L).
 
