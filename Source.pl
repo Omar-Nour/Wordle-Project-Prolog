@@ -1,8 +1,6 @@
 :- dynamic
         word/2.
 
-available_length(L).
-
 % Implemented by: Shamekh
 is_category(C):- 
   word(_, C).
