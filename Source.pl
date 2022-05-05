@@ -52,7 +52,7 @@ build_kb:-
 choose_catgeory(List, C):-
 	write('Choose a category: '), nl,
 	read(Input),
-	member(Input, List).
+	member(Input, List),
 	C = Input.
 
 choose_catgeory(List, C):-
