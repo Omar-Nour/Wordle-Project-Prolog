@@ -38,6 +38,49 @@ build_kb:-
             build_kb
         )
     ).
+    
+	%The available categories are: [animals,greetings,fruits, collections]
+	%Choose a category:
+	%|: animals.
+	%Choose a length:
+	%|: 9.
+	%There are no words of this length.
+	%Choose a length:
+	%|: 5.
+	%Game started. You have 6 guesses.
+	
+init_game(W):-
+ 	write('The available categories are: '),
+	categories(List),
+	write(List), nl,
+	available_length(L),
+	choose_catgeory(List, C),
+	choose_length(L, word_length),
+	pick_word(W, word_length, C).
+
+choose_catgeory(List, C):-
+	write('Choose a category: '),
+	read(C),
+	member(C, List).
+
+choose_catgeory(List, C):-
+	write('Choose a category: '),
+	read(C),
+	\+member(C, List),
+	write('There is no such category'), nl,
+	choose_catgeory(List, C).
+	
+choose_length(L, word_length):-
+	write('Choose a length: '),
+	read(Len),
+	member(Len, L).
+
+choose_length(L, word_length):-
+	write('Choose a length: '),
+	read(Len),
+	\+member(Len, L),
+	write('There are no words of this length.'), nl,
+	choose_length(L, word_length).
 %
   
 % Implemented by: Ali
@@ -60,4 +103,5 @@ main:-
   write("Welcome to Pro-Wordle!"), nl,
   write("----------------------"), nl,
   build_kb,
+  init_game(W),
   play.
