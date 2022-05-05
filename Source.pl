@@ -1,3 +1,7 @@
+word(abc, efg).
+
+availablele_length(L).
+
 % Implemented by: Shamekh
 is_category(C):- 
   word(_, C).
