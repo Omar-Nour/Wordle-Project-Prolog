@@ -51,9 +51,9 @@ correct_letters_helper(H,[H0|T0],CL):-
   (H = H0, CL is [H|T]);
   (H \= H0, correct_letters_helper(H, [T0], CL1)).
 
-category([]). 
-category(L):-
-  L = [H|T], is_category(H), category(T).
+categories([]). 
+categories(L):-
+  L = [H|T], is_category(H), categories(T).
 %
 
 main:-
