@@ -202,10 +202,10 @@ correct_letters(L1,[H|T],Cl):-
 correct_letters(L1,T,Cl).
 
 correct_letters(L1,[H|T],Cl):-
-  Cl is [H2|T2],
+  L1 is [H2|T2],
   member(H,L1),
   append(H,Cl)
-  correct_letters(Cl,T,T2).
+  correct_letters(T2,T,Cl).
 
 correct_letters_helper(X, [], []).
 correct_letters_helper(H,[H0|T0],CL):-
