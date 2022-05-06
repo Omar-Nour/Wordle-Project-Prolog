@@ -69,14 +69,14 @@ choose_length(L, Word_length):-
 	write('Choose a length: '), nl,
 	read(Len),
 	number_string(N, Len),
-	member(N, L),
+	N = L,
 	Word_length = N.
 
 choose_length(L, Word_length):-
 	write('Choose a length: '), nl,
 	read(Len),
 	number_string(N, Len),
-	\+member(N, L),
+	N \= L,
 	write('There are no words of this length.'), nl,
 	choose_length(L, Word_length).
 
