@@ -35,7 +35,7 @@ pick_random_word(W, L, C):-
   
 build_kb:-
     write('Please enter a word and its category on separate lines:'), nl,
-    read(N), nl,
+    read(N),,
     (
         (
             N == 'done',
