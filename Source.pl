@@ -89,7 +89,7 @@ init_game(W):-
 	choose_length(Word_length,C),
 	Guesses is Word_length + 1,
 	pick_random_word(W, Word_length, C),
-	write('Game started. You have '), write(Guesses), write(' guesses.'), nl.
+	write('Game started. You have '), write(Guesses), write(' guesses.'), nl, nl.
 
 get_word(Length, W, Rem_guesses):-
 	write('Enter a word composed of '), write(Length), write(' letters:'), nl,
