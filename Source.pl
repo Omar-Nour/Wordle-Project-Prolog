@@ -142,9 +142,11 @@ correct_letters_helper(H,[H0|T0],CL):-
   (H = H0, CL is [H|T]);
   (H \= H0, correct_letters_helper(H, [T0], CL1)).
 
-categories([]). 
+
 categories(L):-
   L = [H|T], is_category(H), categories(T), \+ member(H,T).
+categories([]). 
+
 %
 
 play:-
