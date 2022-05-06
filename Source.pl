@@ -1,8 +1,6 @@
 :- dynamic
         word/2.
 
-List_of_categories = [].
-
 % Implemented by: Shamekh
 is_category(C):- 
   word(_, C).
@@ -35,13 +33,14 @@ build_kb:-
             N == 'done',
             write('Done building the words database...'), nl, nl
         )
+	
         ;
+	
         (
             N \== 'done',
             read(C),
             assert(word(N, C)),
-	    append(C,List_of_catogries,X),
-            build_kb.
+            build_kb
         )
     ).
     
@@ -147,8 +146,8 @@ correct_letters_helper(H,[H0|T0],CL):-
 
 
 categories(L):-
-%L = List_of_categories, L = [H|T], is_category(H), \+ member(H,T), categories(T).
-L = List_of_categories.
+ L = [H|T], is_category(H), \+ member(H,T), categories(T).
+
 
 categories([]). 
 
