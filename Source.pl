@@ -1,5 +1,6 @@
 :- dynamic
         word/2.
+  		
 
 % Implemented by: Shamekh
 is_category(C):- 
@@ -145,11 +146,23 @@ correct_letters_helper(H,[H0|T0],CL):-
   (H \= H0, correct_letters_helper(H, [T0], CL1)).
 
 
+%categories(L):-
+% L = [H|T], is_category(H), \+ member(H,T), categories(T).
+
+
+%categories([]). 
+
+
 categories(L):-
- L = [H|T], is_category(H), \+ member(H,T), categories(T).
+	aggregate_all(count, word(_,C), Count).
+	catg_h(Count, Acc, L).
 
-
-categories([]). 
+catg_h(0, L, L).
+catg_h(X, Acc, L):-
+	word(_, C),
+	\+member(C, Acc).
+	append(Acc, [C], NewAcc),
+	catg_h(X, NewAcc, L).
 
 
 play:-
