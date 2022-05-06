@@ -195,17 +195,20 @@ turn(Rem_guesses, W, Correct_letters, Correct_positions, Length):-
   
 % Implemented by: Ali
 
-correct_letters(_,[],[]).
-
 correct_letters(L1,[H|T],Cl):-
+	correct_letters_h(L1,[H|T],[],Cl).
+
+correct_letters_h(_,[],X,X).
+
+correct_letters_h(L1,[H|T],Acc,Cl):-
 \+member(H,L1),
-correct_letters(L1,T,Cl).
+correct_letters_h(L1,T,Acc,Cl).
 
-correct_letters(L1,[H|T],Cl):-
+correct_letters_h(L1,[H|T],Acc,Cl):-
   L1 is [H2|T2],
   member(H,L1),
-  append(H,Cl)
-  correct_letters(T2,T,Cl).
+  append(H,Acc),
+  correct_letters_h(T2,T,Acc,Cl).
 
 correct_letters_helper(X, [], []).
 correct_letters_helper(H,[H0|T0],CL):-
