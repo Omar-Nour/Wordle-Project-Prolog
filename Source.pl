@@ -35,7 +35,7 @@ pick_random_word(W, L, C):-
   
 build_kb:-
     write('Please enter a word and its category on separate lines:'), nl,
-    read(N),
+    read(N), nl,
     (
         (
             N == 'done',
@@ -44,7 +44,7 @@ build_kb:-
         ;
         (
             N \== 'done',
-            read(C), nl,
+            read(C),
             assert(word(N, C)),
             build_kb
         )
@@ -109,12 +109,12 @@ get_word(Length, W, Rem_guesses):-
 			get_word(Length, W, Rem_guesses) 
 		)
 	).
-
-turn(Rem_guesses, W, Correct_letters, Correct_positions, Length):-
+	
+turn(Rem_guesses, _, _):-
 	Rem_guesses == 0,
 	write('You Lost').
 	
-turn(Rem_guesses, W, Correct_letters, Correct_positions, Length):-
+turn(Rem_guesses, W, Length):-
 	N_Rem_guesses is Rem_guesses - 1,
 	get_word(Length, Word, Rem_guesses),
 	(
@@ -127,17 +127,17 @@ turn(Rem_guesses, W, Correct_letters, Correct_positions, Length):-
 			W \== Word,
 			correct_letters(W, Word, Correct_letters),
 			correct_positions(W, Word, Correct_positions),
-			atom_codes(C1, Correct_letters),
+			atom_codes(C1, Correct_letters), 
 			atom_codes(C2, Correct_positions),
 			atom_chars(C1, CL),
 			atom_chars(C2, CP),
 			write('Correct letters are: '), write(CL), nl,
 			write('Correct letters in correct positions are: '), write(CP), nl,
 			write('Remaining Guesses are '), write(N_Rem_guesses), nl, nl,
-			turn(N_Rem_guesses, W, Correct_letters, Correct_positions, Length)
+			turn(N_Rem_guesses, W, Length)
 		)
 	).
-	
+
 correct_letters(L1, L2, Cl):-
 	L1 = [Input|T2],
 	correct_letters_h([Input|T2], L2, Cl, []), !.
@@ -148,12 +148,20 @@ correct_letters_h([Input|T2], L2, Cl, Acc):-
 	(
 		(
 			member(Input, L2),
-			append([Input], Acc, NewAcc)
+			\+member(Input, Acc),
+			append(Acc, [Input], NewAcc)
 		)
 		;
 		(
-			\+member(Input, L2),
-			NewAcc = Acc
+			(
+				\+member(Input, L2),
+				NewAcc = Acc
+			)
+			;
+			(
+				member(Input, Acc),
+				NewAcc = Acc
+			)
 		)
 	),
 	correct_letters_h(T2, L2, Cl, NewAcc).
@@ -166,11 +174,11 @@ play:-
    string_to_list(W, Word),
    length(Word, Length),
    Turns is Length + 1,
-   turn(Turns, Word, Correct_letters, Correct_positions, Length).
+   turn(Turns, Word, Length).
 
 main:-
   write("Welcome to Pro-Wordle!"), nl,
-  write("----------------------"), nl,
+  write("--------------------------------"), nl,
   build_kb,
   play.
   
