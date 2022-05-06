@@ -110,10 +110,6 @@ get_word(Length, W, Rem_guesses):-
 		)
 	).
 	
-turn(Rem_guesses, _, _):-
-	Rem_guesses == 0,
-	write('You Lost').
-	
 turn(Rem_guesses, W, Length):-
 	N_Rem_guesses is Rem_guesses - 1,
 	get_word(Length, Word, Rem_guesses),
@@ -124,6 +120,7 @@ turn(Rem_guesses, W, Length):-
 		)
 		;
 		(
+			N_Rem_guesses > 0,
 			W \== Word,
 			correct_letters(W, Word, Correct_letters),
 			correct_positions(W, Word, Correct_positions),
@@ -135,6 +132,11 @@ turn(Rem_guesses, W, Length):-
 			write('Correct letters in correct positions are: '), write(CP), nl,
 			write('Remaining Guesses are '), write(N_Rem_guesses), nl, nl,
 			turn(N_Rem_guesses, W, Length)
+		)
+		;
+		(
+			N_Rem_guesses == 0,
+			write('You Lost')
 		)
 	).
 
