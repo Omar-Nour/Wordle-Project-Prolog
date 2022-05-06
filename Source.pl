@@ -31,7 +31,7 @@ build_kb:-
     (
         (
             N == 'done',
-            write('Done building the words database...'), nl
+            write('Done building the words database...'), nl, nl
         )
         ;
         (
