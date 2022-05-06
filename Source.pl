@@ -144,7 +144,7 @@ correct_letters_helper(H,[H0|T0],CL):-
 
 
 categories(L):-
-  L = [H|T], is_category(H), categories(T), \+ member(H,T).
+  L = [H|T], is_category(H), \+ member(H,T), categories(T).
 categories([]). 
 
 %
