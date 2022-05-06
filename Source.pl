@@ -160,7 +160,7 @@ categories(L):-
 catg_h(0, L, L).
 catg_h(X, Acc, L):-
 	word(_, C),
-	\+member(C, Acc).
+	\+member(C, Acc),
 	append(Acc, [C], NewAcc),
 	catg_h(X, NewAcc, L).
 
