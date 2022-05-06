@@ -1,6 +1,8 @@
 :- dynamic
         word/2.
 
+List_of_categories = [].
+
 % Implemented by: Shamekh
 is_category(C):- 
   word(_, C).
@@ -38,6 +40,7 @@ build_kb:-
             N \== 'done',
             read(C),
             assert(word(N, C)),
+	    append(C,List_of_catogries,X).
             build_kb
         )
     ).
@@ -133,7 +136,7 @@ turn(Rem_guesses, W, Correct_letters, Correct_positions, Length):-
   
 % Implemented by: Ali
 correct_letters(L1,L2,CL):-
-  CL is [H|T],
+  CL = [H|T],
   correct_letters_helper(H, L1, [H|T]),
   correct_letters_helper(H, L2, [H|T]).
 
@@ -144,10 +147,11 @@ correct_letters_helper(H,[H0|T0],CL):-
 
 
 categories(L):-
-  L = [H|T], is_category(H), \+ member(H,T), categories(T).
+%L = List_of_categories, L = [H|T], is_category(H), \+ member(H,T), categories(T).
+L = List_of_categories.
+
 categories([]). 
 
-%
 
 play:-
    init_game(W),
