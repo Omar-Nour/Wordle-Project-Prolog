@@ -40,8 +40,8 @@ build_kb:-
             N \== 'done',
             read(C),
             assert(word(N, C)),
-	    ,append(C,List_of_catogries,X).
-            build_kb
+	    append(C,List_of_catogries,X),
+            build_kb.
         )
     ).
     
