@@ -196,8 +196,12 @@ turn(Rem_guesses, W, Correct_letters, Correct_positions, Length):-
 			W \== Word,
 			correct_letters(W, Word, Correct_letters),
 			correct_positions(W, Word, Correct_positions),
-			write('Correct letters are: '), write(Correct_letters), nl,
-			write('Correct letters in correct positions are: '), write(Correct_positions), nl,
+			atom_codes(C1, Correct_letters),
+			atom_codes(C2, Correct_positions),
+			atom_chars(C1, CL),
+			atom_chars(C2, CP),
+			write('Correct letters are: '), write(CL), nl,
+			write('Correct letters in correct positions are: '), write(CP), nl,
 			write('Remaining Guesses are '), write(N_Rem_guesses), nl, nl,
 			turn(N_Rem_guesses, W, Correct_letters, Correct_positions, Length)
 		)
