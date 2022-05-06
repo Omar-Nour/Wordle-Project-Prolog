@@ -44,7 +44,7 @@ build_kb:-
         ;
         (
             N \== 'done',
-            read(C),
+            read(C), nl,
             assert(word(N, C)),
             build_kb
         )
