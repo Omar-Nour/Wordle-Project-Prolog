@@ -74,3 +74,10 @@ Enter a word composed of 5 letters:
 |: horse.
 You Won!
 ```
+
+## Contributors 
+This project was the issue of a whole semester of tireless work, sleepless nights, dedication and passion of:
+- [Mohamed Shamekh](https://github.com/shamekhjr)
+- [Omar Nour](https://github.com/Omar-Nour)
+- [Ali Abdalwahaab](https://github.com/AliAbdalwahaab)
+- Hamza Wareh
